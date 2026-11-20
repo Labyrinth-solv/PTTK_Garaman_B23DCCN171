@@ -3,18 +3,18 @@
 	request.setCharacterEncoding("UTF-8");
 	if (session.getAttribute("warehouseEmployee") == null) { response.sendRedirect("../Login.jsp"); return; }
 
-	if (request.getParameter("name") != null) {
+	if (request.getParameter("btnSave") != null) {
 		// Dong goi thong tin vua nhap thanh doi tuong Supplier1 roi luu
-		Supplier1 s = new Supplier1();
-		s.setName(request.getParameter("name"));
-		s.setAddress(request.getParameter("address"));
-		s.setPhoneNumber(request.getParameter("phoneNumber"));
-		s.setEmail(request.getParameter("email"));
-		new SupplierDAO().saveNewSupplier(s);
+		Supplier1 supplier = new Supplier1();
+		supplier.setName(request.getParameter("inName"));
+		supplier.setAddress(request.getParameter("inAddress"));
+		supplier.setPhoneNumber(request.getParameter("inPhoneNumber"));
+		supplier.setEmail(request.getParameter("inEmail"));
+		new SupplierDAO().saveNewSupplier(supplier);
 
 		// Chon luon nha cung cap vua them cho hoa don dang lap
 		ImportInvoice1 invoice = (ImportInvoice1) session.getAttribute("invoice");
-		invoice.setSupplier(s);
+		invoice.setSupplier(supplier);
 		response.sendRedirect("ImportInvoiceForm1.jsp");
 		return;
 	}
@@ -33,24 +33,24 @@
 	<h2>Thêm nhà cung cấp mới</h2>
 	<form action="AddNewSupplierForm1.jsp" method="post">
 		<div class="form-group">
-			<label for="name">Tên</label>
-			<input type="text" id="name" name="name" required>
+			<label for="inName">Tên</label>
+			<input type="text" id="inName" name="inName" required>
 		</div>
 		<div class="form-group">
-			<label for="address">Địa chỉ</label>
-			<input type="text" id="address" name="address">
+			<label for="inAddress">Địa chỉ</label>
+			<input type="text" id="inAddress" name="inAddress">
 		</div>
 		<div class="form-group">
-			<label for="phoneNumber">Điện thoại</label>
-			<input type="text" id="phoneNumber" name="phoneNumber">
+			<label for="inPhoneNumber">Điện thoại</label>
+			<input type="text" id="inPhoneNumber" name="inPhoneNumber">
 		</div>
 		<div class="form-group">
-			<label for="email">Email</label>
-			<input type="text" id="email" name="email">
+			<label for="inEmail">Email</label>
+			<input type="text" id="inEmail" name="inEmail">
 		</div>
 		<div class="actions">
-			<input type="submit" value="Lưu">
-			<a class="btn btn-secondary" href="ImportInvoiceForm1.jsp">Hủy</a>
+			<input type="submit" name="btnSave" value="Lưu">
+			<a class="btn btn-secondary" id="btnCancel" href="ImportInvoiceForm1.jsp">Hủy</a>
 		</div>
 	</form>
 </div>

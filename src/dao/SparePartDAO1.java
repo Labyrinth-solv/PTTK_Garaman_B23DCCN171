@@ -9,12 +9,12 @@ import model.SparePart1;
 public class SparePartDAO1 extends DAO1 {
 
 	// Tim cac phu tung co ten chua tu khoa
-	public ArrayList<SparePart1> getSparePartsByName(String key) {
+	public ArrayList<SparePart1> getSparePartsByName(String keyword) {
 		ArrayList<SparePart1> list = new ArrayList<>();
 		String sql = "SELECT * FROM tblSparePart1 WHERE name LIKE ?";
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setString(1, "%" + key + "%");
+			ps.setString(1, "%" + keyword + "%");
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				list.add(toSparePart(rs));
@@ -26,11 +26,11 @@ public class SparePartDAO1 extends DAO1 {
 	}
 
 	// Lay chi tiet 1 phu tung theo id
-	public SparePart1 getSparePartDetail(int id) {
+	public SparePart1 getSparePartDetail(int idSparePart) {
 		String sql = "SELECT * FROM tblSparePart1 WHERE id = ?";
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setInt(1, id);
+			ps.setInt(1, idSparePart);
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
 				return toSparePart(rs);
@@ -52,7 +52,7 @@ public class SparePartDAO1 extends DAO1 {
 		sp.setSellingPrice(rs.getFloat("sellingPrice"));
 		sp.setStock(rs.getInt("stock"));
 		sp.setDescription(rs.getString("description"));
-		sp.setWarrantyPeriod(rs.getInt("warrantyPeriod"));
+		sp.setWarrantyPeriod(rs.getFloat("warrantyPeriod"));
 		return sp;
 	}
 }

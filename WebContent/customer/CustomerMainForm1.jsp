@@ -16,7 +16,7 @@
 <div class="container container-sm">
 	<h2>Xin chào khách hàng <%= customer.getName() %></h2>
 	<div class="actions">
-		<a class="btn" href="ServiceSearchForm1.jsp">Tìm kiếm thông tin dịch vụ</a>
+		<a class="btn" id="btnSearchService" href="ServiceSearchForm1.jsp">Tìm kiếm thông tin dịch vụ</a>
 	</div>
 </div>
 </body>

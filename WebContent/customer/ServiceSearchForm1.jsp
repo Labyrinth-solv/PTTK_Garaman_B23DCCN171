@@ -3,13 +3,13 @@
 	request.setCharacterEncoding("UTF-8");
 	if (session.getAttribute("customer") == null) { response.sendRedirect("../Login.jsp"); return; }
 
-	String key = request.getParameter("key");
+	String searchKeyword = request.getParameter("searchKeyword");
 	ArrayList<Service1> services = new ArrayList<>();
 	ArrayList<SparePart1> spareParts = new ArrayList<>();
-	if (key != null) {
+	if (searchKeyword != null) {
 		// Bam "Tim kiem": goi 2 DAO tim dich vu va phu tung theo ten
-		services = new ServiceDAO1().getServicesByName(key);
-		spareParts = new SparePartDAO1().getSparePartsByName(key);
+		services = new ServiceDAO1().getServicesByName(searchKeyword);
+		spareParts = new SparePartDAO1().getSparePartsByName(searchKeyword);
 	}
 %>
 <!DOCTYPE html>
@@ -25,14 +25,14 @@
 <div class="container">
 	<h2>Tìm kiếm thông tin dịch vụ</h2>
 	<form class="form-inline" action="ServiceSearchForm1.jsp" method="get">
-		<input type="text" name="key" placeholder="Nhập tên dịch vụ hoặc phụ tùng..." value="<%= key == null ? "" : key %>">
-		<input type="submit" value="Tìm kiếm">
+		<input type="text" name="searchKeyword" placeholder="Nhập tên dịch vụ hoặc phụ tùng..." value="<%= searchKeyword == null ? "" : searchKeyword %>">
+		<input type="submit" name="btnSearch" value="Tìm kiếm">
 	</form>
 
-	<% if (key != null && services.isEmpty() && spareParts.isEmpty()) { %>
+	<% if (searchKeyword != null && services.isEmpty() && spareParts.isEmpty()) { %>
 		<p class="empty">Không tìm thấy dịch vụ/phụ tùng phù hợp</p>
-	<% } else if (key != null) { %>
-	<table>
+	<% } else if (searchKeyword != null) { %>
+	<table id="tblSearchResult">
 		<thead>
 			<tr><th>Tên</th><th>Loại</th><th>Đối tượng áp dụng / Thương hiệu</th><th>Giá</th></tr>
 		</thead>
@@ -57,7 +57,7 @@
 	</table>
 	<% } %>
 	<div class="actions">
-		<a class="btn btn-secondary" href="CustomerMainForm1.jsp">Về trang chủ</a>
+		<a class="btn btn-secondary" id="btnHome" href="CustomerMainForm1.jsp">Về trang chủ</a>
 	</div>
 </div>
 </body>

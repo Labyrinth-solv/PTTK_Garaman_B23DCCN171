@@ -16,7 +16,7 @@
 <div class="container container-sm">
 	<h2>Xin chào nhân viên kho <%= we.getName() %></h2>
 	<div class="actions">
-		<a class="btn" href="ImportInvoiceForm1.jsp?action=new">Nhập phụ tùng</a>
+		<a class="btn" id="btnImportSparePart" href="ImportInvoiceForm1.jsp?action=new">Nhập phụ tùng</a>
 	</div>
 </div>
 </body>

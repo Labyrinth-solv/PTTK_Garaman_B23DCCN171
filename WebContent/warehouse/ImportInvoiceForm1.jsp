@@ -19,7 +19,7 @@
 	String msg = "";
 
 	if ("searchSupplier".equals(action)) {
-		suppliers = new SupplierDAO().getSupplierByName(request.getParameter("key"));
+		suppliers = new SupplierDAO().getSupplierByName(request.getParameter("inSupplierName"));
 		session.setAttribute("suppliers", suppliers);
 	}
 	if ("chooseSupplier".equals(action)) {
@@ -27,7 +27,7 @@
 		invoice.setSupplier(suppliers.get(i));
 	}
 	if ("searchSparePart".equals(action)) {
-		spareParts = new SparePartDAO().getSparePartByName(request.getParameter("key"));
+		spareParts = new SparePartDAO().getSparePartByName(request.getParameter("inSparePartName"));
 		session.setAttribute("spareParts", spareParts);
 	}
 	if ("chooseSparePart".equals(action)) {
@@ -39,8 +39,8 @@
 		// Dong goi 1 dong chi tiet: phu tung dang chon + don gia + so luong
 		ImportDetail1 d = new ImportDetail1();
 		d.setSparePart(sparePart);
-		d.setImportPrice(Float.parseFloat(request.getParameter("price")));
-		d.setQuantity(Integer.parseInt(request.getParameter("quantity")));
+		d.setImportPrice(Float.parseFloat(request.getParameter("inImportPrice")));
+		d.setQuantity(Integer.parseInt(request.getParameter("inQuantity")));
 		d.setImportInvoice(invoice);
 		invoice.getImportDetail().add(d);
 		session.removeAttribute("sparePart");
@@ -77,9 +77,9 @@
 		<h3>1. Nhà cung cấp: <%= invoice.getSupplier() == null ? "(chưa chọn)" : invoice.getSupplier().getName() %></h3>
 		<form class="form-inline" action="ImportInvoiceForm1.jsp" method="post">
 			<input type="hidden" name="action" value="searchSupplier">
-			<input type="text" name="key" placeholder="Tìm nhà cung cấp...">
-			<input type="submit" value="Tìm">
-			<a class="btn btn-secondary" href="AddNewSupplierForm1.jsp">NCC mới</a>
+			<input type="text" name="inSupplierName" placeholder="Tìm nhà cung cấp...">
+			<input type="submit" name="btnSearchSupplier" value="Tìm">
+			<a class="btn btn-secondary" id="addSupplier" href="AddNewSupplierForm1.jsp">NCC mới</a>
 		</form>
 		<% if (suppliers != null) { %>
 		<table>
@@ -104,9 +104,9 @@
 		<h3>2. Phụ tùng</h3>
 		<form class="form-inline" action="ImportInvoiceForm1.jsp" method="post">
 			<input type="hidden" name="action" value="searchSparePart">
-			<input type="text" name="key" placeholder="Tìm phụ tùng...">
-			<input type="submit" value="Tìm">
-			<a class="btn btn-secondary" href="AddNewSparePartForm1.jsp">Phụ tùng mới</a>
+			<input type="text" name="inSparePartName" placeholder="Tìm phụ tùng...">
+			<input type="submit" name="btnSearchSparePart" value="Tìm">
+			<a class="btn btn-secondary" id="addNewSparePart" href="AddNewSparePartForm1.jsp">Phụ tùng mới</a>
 		</form>
 		<% if (spareParts != null) { %>
 		<table>
@@ -129,9 +129,9 @@
 		<form class="form-inline detail-box" action="ImportInvoiceForm1.jsp" method="post">
 			<input type="hidden" name="action" value="addDetail">
 			<span>Phụ tùng: <b><%= sparePart.getName() %></b></span>
-			<input type="number" name="price" min="1" placeholder="Đơn giá nhập" required>
-			<input type="number" name="quantity" min="1" placeholder="Số lượng" required>
-			<input type="submit" value="Thêm vào hóa đơn">
+			<input type="number" name="inImportPrice" min="1" placeholder="Đơn giá nhập" required>
+			<input type="number" name="inQuantity" min="1" placeholder="Số lượng" required>
+			<input type="submit" name="btnAddDetail" value="Thêm vào hóa đơn">
 		</form>
 		<% } %>
 	</div>
@@ -159,8 +159,8 @@
 	</div>
 
 	<div class="actions">
-		<a class="btn" href="ImportInvoiceForm1.jsp?action=confirm">Xác nhận hóa đơn</a>
-		<a class="btn btn-secondary" href="WarehouseMainForm1.jsp">Hủy</a>
+		<a class="btn" id="btnConfirmImport" href="ImportInvoiceForm1.jsp?action=confirm">Xác nhận hóa đơn</a>
+		<a class="btn btn-secondary" id="btnCancel" href="WarehouseMainForm1.jsp">Hủy</a>
 	</div>
 </div>
 </body>

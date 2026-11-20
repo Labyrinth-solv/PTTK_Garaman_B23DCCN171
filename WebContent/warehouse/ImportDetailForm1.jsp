@@ -4,7 +4,7 @@
 	if (we == null) { response.sendRedirect("../Login.jsp"); return; }
 	ImportInvoice1 invoice = (ImportInvoice1) session.getAttribute("invoice");
 
-	if (request.getParameter("save") != null) {
+	if (request.getParameter("btnPrintInvoice") != null) {
 		// Bam "Luu va in hoa don"
 		invoice.setCreatedDate(new Date());
 		invoice.setPaymentDate(new Date());
@@ -59,8 +59,8 @@
 	</table>
 	<p class="total">Tổng tiền: <b><%= total %></b> VNĐ</p>
 	<form class="actions" action="ImportDetailForm1.jsp" method="post">
-		<input type="submit" name="save" value="Lưu và in hóa đơn">
-		<a class="btn btn-secondary" href="ImportInvoiceForm1.jsp">Hủy</a>
+		<input type="submit" name="btnPrintInvoice" value="Lưu và in hóa đơn">
+		<a class="btn btn-secondary" id="btnCancel" href="ImportInvoiceForm1.jsp">Hủy</a>
 	</form>
 </div>
 </body>

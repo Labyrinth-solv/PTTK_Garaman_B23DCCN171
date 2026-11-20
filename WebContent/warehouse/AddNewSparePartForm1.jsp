@@ -3,12 +3,12 @@
 	request.setCharacterEncoding("UTF-8");
 	if (session.getAttribute("warehouseEmployee") == null) { response.sendRedirect("../Login.jsp"); return; }
 
-	if (request.getParameter("name") != null) {
+	if (request.getParameter("btnSave") != null) {
 		// Dong goi thong tin vua nhap thanh doi tuong SparePart1 roi luu
 		SparePart1 sp = new SparePart1();
-		sp.setName(request.getParameter("name"));
-		sp.setType(request.getParameter("type"));
-		sp.setBrand(request.getParameter("brand"));
+		sp.setName(request.getParameter("inName"));
+		sp.setType(request.getParameter("inType"));
+		sp.setBrand(request.getParameter("inBrand"));
 		new SparePartDAO().saveNewSparePart(sp);
 
 		// Chon luon phu tung vua them de nhap don gia, so luong
@@ -31,20 +31,20 @@
 	<h2>Thêm phụ tùng mới</h2>
 	<form action="AddNewSparePartForm1.jsp" method="post">
 		<div class="form-group">
-			<label for="name">Tên phụ tùng</label>
-			<input type="text" id="name" name="name" required>
+			<label for="inName">Tên phụ tùng</label>
+			<input type="text" id="inName" name="inName" required>
 		</div>
 		<div class="form-group">
-			<label for="type">Loại</label>
-			<input type="text" id="type" name="type">
+			<label for="inType">Loại</label>
+			<input type="text" id="inType" name="inType">
 		</div>
 		<div class="form-group">
-			<label for="brand">Thương hiệu</label>
-			<input type="text" id="brand" name="brand">
+			<label for="inBrand">Thương hiệu</label>
+			<input type="text" id="inBrand" name="inBrand">
 		</div>
 		<div class="actions">
-			<input type="submit" value="Lưu">
-			<a class="btn btn-secondary" href="ImportInvoiceForm1.jsp">Hủy</a>
+			<input type="submit" name="btnSave" value="Lưu">
+			<a class="btn btn-secondary" id="btnCancel" href="ImportInvoiceForm1.jsp">Hủy</a>
 		</div>
 	</form>
 </div>

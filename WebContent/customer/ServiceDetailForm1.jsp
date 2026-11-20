@@ -2,9 +2,9 @@
 <%
 	if (session.getAttribute("customer") == null) { response.sendRedirect("../Login.jsp"); return; }
 
-	int id = Integer.parseInt(request.getParameter("id"));
-	Service1 s = new ServiceDAO1().getServiceDetail(id);
-	ArrayList<SparePartPerService1> parts = new SparePartPerServiceDAO1().getSparePartsByService(id);
+	int idService = Integer.parseInt(request.getParameter("id"));
+	Service1 s = new ServiceDAO1().getServiceDetail(idService);
+	ArrayList<SparePartPerService1> parts = new SparePartPerServiceDAO1().getSparePartsByService(idService);
 %>
 <!DOCTYPE html>
 <html>
@@ -18,12 +18,12 @@
 <jsp:include page="/header.jsp" />
 <div class="container">
 	<h2>Chi tiết dịch vụ</h2>
-	<div class="detail-box">
+	<div class="detail-box" id="tblService">
 		<p><b>Tên:</b> <%= s.getName() %></p>
 		<p><b>Loại dịch vụ:</b> <%= s.getType() %></p>
 		<p><b>Mô tả:</b> <%= s.getDescription() %></p>
 		<p><b>Đơn giá:</b> <%= s.getPrice() %> VNĐ</p>
-		<p><b>Thời gian thực hiện:</b> <%= s.getDuration() %> phút</p>
+		<p><b>Thời gian thực hiện:</b> <%= (int) s.getDuration() %> phút</p>
 		<p><b>Đối tượng áp dụng:</b> <%= s.getTargetVehicle() %></p>
 		<p><b>Phụ tùng sử dụng:</b></p>
 		<ul>
@@ -36,7 +36,7 @@
 		</ul>
 	</div>
 	<div class="actions">
-		<a class="btn btn-secondary" href="javascript:history.back()">Quay lại</a>
+		<a class="btn btn-secondary" id="btnCancel" href="javascript:history.back()">Quay lại</a>
 	</div>
 </div>
 </body>

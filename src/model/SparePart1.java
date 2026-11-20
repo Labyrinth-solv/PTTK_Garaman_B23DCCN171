@@ -10,7 +10,7 @@ public class SparePart1 {
 	private int stock;
 	private String image;
 	private String description;
-	private int warrantyPeriod;
+	private float warrantyPeriod;
 
 	public int getId() { return id; }
 	public void setId(int id) { this.id = id; }
@@ -30,6 +30,6 @@ public class SparePart1 {
 	public void setImage(String image) { this.image = image; }
 	public String getDescription() { return description; }
 	public void setDescription(String description) { this.description = description; }
-	public int getWarrantyPeriod() { return warrantyPeriod; }
-	public void setWarrantyPeriod(int warrantyPeriod) { this.warrantyPeriod = warrantyPeriod; }
+	public float getWarrantyPeriod() { return warrantyPeriod; }
+	public void setWarrantyPeriod(float warrantyPeriod) { this.warrantyPeriod = warrantyPeriod; }
 }

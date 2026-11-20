@@ -32,18 +32,18 @@ public class SupplierDAO extends DAO1 {
 	}
 
 	// Luu nha cung cap moi, gan id vua sinh vao doi tuong
-	public boolean saveNewSupplier(Supplier1 s) {
+	public boolean saveNewSupplier(Supplier1 supplier) {
 		String sql = "INSERT INTO tblSupplier1(name, address, phoneNumber, email) VALUES (?, ?, ?, ?)";
 		try {
 			PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-			ps.setString(1, s.getName());
-			ps.setString(2, s.getAddress());
-			ps.setString(3, s.getPhoneNumber());
-			ps.setString(4, s.getEmail());
+			ps.setString(1, supplier.getName());
+			ps.setString(2, supplier.getAddress());
+			ps.setString(3, supplier.getPhoneNumber());
+			ps.setString(4, supplier.getEmail());
 			ps.executeUpdate();
 			ResultSet rs = ps.getGeneratedKeys();
 			if (rs.next()) {
-				s.setId(rs.getInt(1));
+				supplier.setId(rs.getInt(1));
 			}
 			return true;
 		} catch (Exception e) {

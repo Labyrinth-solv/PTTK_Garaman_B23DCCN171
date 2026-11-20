@@ -6,7 +6,7 @@ public class Service1 {
 	private String type;
 	private String description;
 	private float price;
-	private int duration;
+	private float duration;
 	private String image;
 	private String targetVehicle;
 
@@ -20,8 +20,8 @@ public class Service1 {
 	public void setDescription(String description) { this.description = description; }
 	public float getPrice() { return price; }
 	public void setPrice(float price) { this.price = price; }
-	public int getDuration() { return duration; }
-	public void setDuration(int duration) { this.duration = duration; }
+	public float getDuration() { return duration; }
+	public void setDuration(float duration) { this.duration = duration; }
 	public String getImage() { return image; }
 	public void setImage(String image) { this.image = image; }
 	public String getTargetVehicle() { return targetVehicle; }

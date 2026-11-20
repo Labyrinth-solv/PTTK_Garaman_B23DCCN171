@@ -2,8 +2,8 @@
 <%
 	if (session.getAttribute("customer") == null) { response.sendRedirect("../Login.jsp"); return; }
 
-	int id = Integer.parseInt(request.getParameter("id"));
-	SparePart1 sp = new SparePartDAO1().getSparePartDetail(id);
+	int idSparePart = Integer.parseInt(request.getParameter("id"));
+	SparePart1 sp = new SparePartDAO1().getSparePartDetail(idSparePart);
 %>
 <!DOCTYPE html>
 <html>
@@ -17,18 +17,18 @@
 <jsp:include page="/header.jsp" />
 <div class="container">
 	<h2>Chi tiết phụ tùng</h2>
-	<div class="detail-box">
+	<div class="detail-box" id="tblSparePart">
 		<p><b>Tên:</b> <%= sp.getName() %></p>
 		<p><b>Loại phụ tùng:</b> <%= sp.getType() %></p>
 		<p><b>Thương hiệu:</b> <%= sp.getBrand() %></p>
 		<p><b>Xuất xứ:</b> <%= sp.getOrigin() %></p>
 		<p><b>Giá bán:</b> <%= sp.getSellingPrice() %> VNĐ</p>
 		<p><b>Số lượng tồn kho:</b> <%= sp.getStock() %></p>
-		<p><b>Bảo hành:</b> <%= sp.getWarrantyPeriod() %> tháng</p>
+		<p><b>Bảo hành:</b> <%= (int) sp.getWarrantyPeriod() %> tháng</p>
 		<p><b>Mô tả:</b> <%= sp.getDescription() %></p>
 	</div>
 	<div class="actions">
-		<a class="btn btn-secondary" href="javascript:history.back()">Quay lại</a>
+		<a class="btn btn-secondary" id="btnCancel" href="javascript:history.back()">Quay lại</a>
 	</div>
 </div>
 </body>
