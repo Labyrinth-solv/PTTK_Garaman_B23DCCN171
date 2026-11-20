@@ -12,6 +12,7 @@
 	<link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
+<jsp:include page="/header.jsp" />
 <div class="container container-sm">
 	<h2>Xin chào nhân viên kho <%= we.getName() %></h2>
 	<div class="actions">

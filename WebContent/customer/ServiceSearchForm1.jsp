@@ -21,6 +21,7 @@
 	<link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
+<jsp:include page="/header.jsp" />
 <div class="container">
 	<h2>Tìm kiếm thông tin dịch vụ</h2>
 	<form class="form-inline" action="ServiceSearchForm1.jsp" method="get">

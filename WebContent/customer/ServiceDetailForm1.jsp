@@ -15,6 +15,7 @@
 	<link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
+<jsp:include page="/header.jsp" />
 <div class="container">
 	<h2>Chi tiết dịch vụ</h2>
 	<div class="detail-box">

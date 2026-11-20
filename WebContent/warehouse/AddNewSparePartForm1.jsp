@@ -26,6 +26,7 @@
 	<link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
+<jsp:include page="/header.jsp" />
 <div class="container container-sm">
 	<h2>Thêm phụ tùng mới</h2>
 	<form action="AddNewSparePartForm1.jsp" method="post">

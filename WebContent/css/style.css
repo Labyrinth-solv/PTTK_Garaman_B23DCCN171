@@ -4,7 +4,7 @@
 
 body {
 	margin: 0;
-	padding: 24px 16px;
+	padding: 0 0 24px;
 	font-family: "Segoe UI", Arial, sans-serif;
 	font-size: 14px;
 	line-height: 1.5;
@@ -12,9 +12,25 @@ body {
 	background-color: #f3f5f9;
 }
 
+.topbar {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px 24px;
+	background-color: #ffffff;
+	border-bottom: 1px solid #e2e8f0;
+}
+
+.brand {
+	font-size: 16px;
+	font-weight: 700;
+	color: #0f172a;
+}
+
 .container {
+	width: calc(100% - 32px);
 	max-width: 820px;
-	margin: 0 auto;
+	margin: 24px auto 0;
 	background: #ffffff;
 	padding: 24px 28px;
 	border: 1px solid #e2e8f0;
@@ -129,6 +145,11 @@ input[type="submit"]:hover {
 	color: #0f172a;
 }
 
+.btn-sm {
+	padding: 5px 12px;
+	font-size: 13px;
+}
+
 table {
 	width: 100%;
 	border-collapse: collapse;
@@ -206,6 +227,7 @@ tbody tr:hover {
 		box-shadow: none;
 		padding: 0;
 	}
+	.topbar,
 	.actions {
 		display: none;
 	}

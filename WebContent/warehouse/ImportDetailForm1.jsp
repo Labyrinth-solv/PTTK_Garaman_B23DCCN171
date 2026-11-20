@@ -32,6 +32,7 @@
 	<link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
+<jsp:include page="/header.jsp" />
 <div class="container">
 	<h2>Hóa đơn nhập phụ tùng</h2>
 	<div class="detail-box">

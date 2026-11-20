@@ -28,6 +28,7 @@
 	<link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
+<jsp:include page="/header.jsp" />
 <div class="container container-sm">
 	<h2>Thêm nhà cung cấp mới</h2>
 	<form action="AddNewSupplierForm1.jsp" method="post">
